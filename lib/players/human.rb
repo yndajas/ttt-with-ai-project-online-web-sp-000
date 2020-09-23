@@ -1,6 +1,6 @@
 module Players
   class Human < Player
-    def move(input)
+    def move(board)
       gets
     end
   end
