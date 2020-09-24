@@ -1,24 +1,66 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+require 'pry'
+
+# start of program
 
 puts "Welcome to Tic Tac Toe"
-puts "How many (human) players?"
 
-players = gets
+players = nil
 
-if players == 2
+until players == "0" || players == "1" || players == "2"
+  puts "How many (human) players? (0-2)"
+  players = gets.strip
+end
+
+if players == "2"
   game = Game.new
-elsif players == 1
-  game = Game.new(player_2 = Players::Computer.new("O"))
-else
+  puts "X plays first"
+  
+elsif players == "1"
+  puts "Do you want to play first or second? (1/2)"
+  
+  human_turn = nil
+  
+  until human_turn == "1" || human_turn == "2"
+    human_turn = gets.strip
+  end
+  
+  puts "Which token would you like to use? (X/O)"
+  
+  human_token = nil
+  
+  until human_token == "X" || human_token == "O"
+    human_token = gets.strip.upcase
+  end
+  
+  config = human_turn.concat(human_token)
+  
+  if config == "1X"
+    game = Game.new(Players::Human.new("X"), Players::Computer.new("O"))
+  elsif config == "1O"
+    game = Game.new(Players::Human.new("O"), Players::Computer.new("X"))
+  elsif config == "2X"
+    game = Game.new(Players::Computer.new("O"), Players::Human.new("X"))
+  else
+    game = Game.new(Players::Computer.new("X"))
+  end  
+
+else players == "0"
   game = Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"))
+
 end
 
 game.play
 
-puts "Would you like to play again? (Y/N)"
+again = nil
 
-again = gets
-
-game.play if again == "Y"
+until again == "n" || again == "no"
+  puts "Would you like to play again? (Y/N)"
+  again = gets.strip.downcase
+  if again == "y" || again == "yes"
+    game.board.reset!
+    game.play
+  end
+end
