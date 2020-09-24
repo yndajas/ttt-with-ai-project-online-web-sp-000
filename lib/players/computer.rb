@@ -3,12 +3,10 @@ require 'pry'
 module Players
   class Computer < Player
     def move(board)
-      move = nil
-      board.cells.each_with_index do |cell, index|
-        move = index if board.valid_move?(index)
+      cell = 1
+      9.times do
+        return cell.to_s if board.valid_move?(cell)
       end
-      move
-      
     end
   end
 end
