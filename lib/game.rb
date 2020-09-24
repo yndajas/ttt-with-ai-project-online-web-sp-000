@@ -54,7 +54,7 @@ class Game
   end
 
   def play
-    puts "Welcome to Tic Tac Toe!"
+    puts "Let's play!"
     self.board.display
     until self.over?
       self.turn
@@ -65,4 +65,29 @@ class Game
       puts "Cat's Game!"
     end
   end
+  
+  # def self.start
+  #   puts "Welcome to Tic Tac Toe"
+  #   puts "How many (human) players?"
+    
+  #   players = gets
+
+  #   if players == 2
+  #     game = Game.new
+  #   else if players == 1
+  #     game = Game.new(player_2 = Players::Computer.new("O"))
+  #   else
+  #     game = Game.new(player_1 = Players::Computer.new("X"), player_2 = Players::Computer.new("O"))
+  #   end
+
+  #   game.play
+
+  #   puts "Would you like to play again? (Y/N)"
+    
+  #   again = gets
+    
+  #   if again == "Y"
+  #     game.play
+  #   end
+  # end
 end
