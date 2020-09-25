@@ -42,8 +42,6 @@ module Players
     end
 
     def ffork(board, token = self.token)
-      # this is not quite right - it can't work out how to make a move that blocks two forks instead of one that blocks one
-      
       token == "X" ? opponent_token = "O" : opponent_token = "X"
       
       # get the combinations that don't contain the opponent's token
@@ -83,6 +81,11 @@ module Players
     end
 
     def block_fork(board)
+      # this is not quite right for blocking forks - it can't work out how to make a move that blocks two forks instead of one that blocks one (it just finds the first fork)
+      # if multiple forks, create two in a row to force defence
+      # shift code in #ffork to #forks and change so that is selects all fork moves with count > 1
+      # change #ffork to take the [0] (or random) from #forks 
+      # change #block_fork so that if #forks has more than one option, it looks for one in #winnable combinations that has an adjacent cell with the same token 
       if self.token == "X"
         self.ffork(board, "O")
       else
