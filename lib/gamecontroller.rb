@@ -1,4 +1,4 @@
-learnclass GameController
+class GameController
   def players
     players = nil
     
@@ -68,17 +68,30 @@ learnclass GameController
     game = self.setup(players)
     
     game.play
+    
+    self.start if self.replay?
   end
   
   def replay?
     replay = nil
     
-    until replay == "n" || replay == "no"
-      puts "Would you like to play again? (Y/N)"
+    until replay == "n" || replay == "no" || replay == "y" || replay == "yes"
+      puts "Play again? (Y/N)"
       replay = gets.strip.downcase
-      if replay == "y" || replay == "yes"
-        self.start
-      end
     end
+    
+    if replay == "y" || replay == "yes"
+      true
+    else
+      false
+    end
+
+    # until replay == "n" || replay == "no"
+    #   puts "Would you like to play again? (Y/N)"
+    #   replay = gets.strip.downcase
+    #   if replay == "y" || replay == "yes"
+    #     self.start
+    #   end
+    # end
   end
 end

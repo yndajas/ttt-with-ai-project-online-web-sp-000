@@ -5,10 +5,8 @@ require 'pry'
 
 # start of program
 
-puts "Welcome to Tic Tac Toe"
+puts "こんにちは! Welcome to Tic Tac Toe!"
 
-control = GameController.new
-control.start
-control.replay?
+GameController.new.start
 
 puts "Thanks for playing!"
