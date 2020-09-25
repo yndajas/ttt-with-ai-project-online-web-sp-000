@@ -1,15 +1,6 @@
-require 'pry'
-
 module Players
   class Computer < Player
     def move(board)
-      binding.pry
-      # cell = 1
-      # until board.valid_move?(cell)
-      #   cell += 1
-      # end
-      # cell.to_s
-      
       self.win(board) || self.block(board) || self.ffork(board) || self.block_fork(board) || self.center(board) || self.opposite_corner(board) || self.corner(board) || self.side(board)
     end
     
