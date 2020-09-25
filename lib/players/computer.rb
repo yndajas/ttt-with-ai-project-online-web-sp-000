@@ -83,9 +83,9 @@ module Players
     def block_fork(board)
       # this is not quite right for blocking forks - it can't work out how to make a move that blocks two forks instead of one that blocks one (it just finds the first fork)
       # if multiple forks, create two in a row to force defence
-      # shift code in #ffork to #forks and change so that is selects all fork moves with count > 1
+      # shift code in #ffork to #forks and change so that is selects all fork moves with count > 1 (add .uniq after filtering by counts)
       # change #ffork to take the [0] (or random) from #forks 
-      # change #block_fork so that if #forks has more than one option, it looks for one in #winnable combinations that has an adjacent cell with the same token 
+      # change #block_fork so that if #forks has more than one option, it looks for one in #winnable combinations that has an adjacent cell with the same token (maybe iterate through the forks, select the winnable combinations that include that fork move, then if [1] is token return [0] (or [2]), else return [1])
       if self.token == "X"
         self.ffork(board, "O")
       else
