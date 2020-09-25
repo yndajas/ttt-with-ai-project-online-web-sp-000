@@ -42,6 +42,8 @@ module Players
     end
 
     def ffork(board, token = self.token)
+      # this is not quite right - it can't work out how to make a move that blocks two forks instead of one that blocks one
+      
       token == "X" ? opponent_token = "O" : opponent_token = "X"
       
       # get the combinations that don't contain the opponent's token
