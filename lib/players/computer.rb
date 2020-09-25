@@ -4,10 +4,10 @@ module Players
   class Computer < Player
     def move(board)
       cell = 1
-      9.times do
-        binding.pry
-        return cell.to_s if board.valid_move?(cell)
+      until board.valid_move?(cell)
+        cell += 1
       end
+      cell.to_s
     end
   end
 end
