@@ -62,6 +62,8 @@ class Game
       self.turn
     end
     if self.won?
+      # could add logic here so that the message is "You win!" or "You lose!" for one-player games
+      
       puts "Congratulations #{self.winner}!"
     else
       puts "Cat's Game!"
