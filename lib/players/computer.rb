@@ -113,11 +113,13 @@ module Players
     end
 
     def corner(board)
-      [1,3,7,9].find {|cell|cell.to_s if board.valid_move?(cell)}
+      move = [1,3,7,9].find {|cell|board.valid_move?(cell)}
+      move.to_s if move != nil
     end
 
     def side(board)
-      [2,4,6,8].find {|cell|cell.to_s if board.valid_move?(cell)}
+      move = [2,4,6,8].find {|cell|board.valid_move?(cell)}
+      move.to_s if move != nil
     end
   end
 end
