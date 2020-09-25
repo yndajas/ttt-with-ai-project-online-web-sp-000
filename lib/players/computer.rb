@@ -4,11 +4,13 @@ module Players
   class Computer < Player
     def move(board)
       binding.pry
-      cell = 1
-      until board.valid_move?(cell)
-        cell += 1
-      end
-      cell.to_s
+      # cell = 1
+      # until board.valid_move?(cell)
+      #   cell += 1
+      # end
+      # cell.to_s
+      
+      self.win(board) || self.block(board) || self.ffork(board) || self.block_fork(board) || self.center(board) || self.opposite_corner(board) || self.corner(board) || self.side(board)
     end
     
     def win(board, token = self.token)
@@ -47,11 +49,11 @@ module Players
       winnable = []
       
       Game::WIN_COMBINATIONS.each do |combination|
-        winnable << combination if !combination.include?(opponent_token)
+        winnable << combination if !combination.collect {|index|board.position(index + 1)}.include?(opponent_token) # get the tokens in the combination (.collect + board.position) and check if they include opponent_token; if not, add combination to winnable
       end
-      
+
       # filter those combinations by ones with one self.token already placed
-      
+
       started = []
       
       winnable.each do |combination|
@@ -70,9 +72,12 @@ module Players
         end
       end
       
-      # get the mode/most frequent valid_move (i.e. one that will )
+      # get a fork if one exists (valid moves that appear in more than one winnable and started combinations)
       
-      valid_moves.max_by{|move|valid_moves.count(move)}
+      index = valid_moves.find {|move| valid_moves.count(move) > 1}
+      
+      (index + 1).to_s if index != nil
+      
     end
 
     def block_fork(board)
