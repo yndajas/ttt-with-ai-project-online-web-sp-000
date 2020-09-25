@@ -85,7 +85,8 @@ module Players
       # if multiple forks, create two in a row to force defence
       # shift code in #ffork to #forks and change so that is selects all fork moves with count > 1 (add .uniq after filtering by counts)
       # change #ffork to take the [0] (or random) from #forks 
-      # change #block_fork so that if #forks has more than one option, it looks for one in #winnable combinations that has an adjacent cell with the same token (maybe iterate through the forks, select the winnable combinations that include that fork move, then if [1] is token return [0] (or [2]), else return [1])
+      # change #block_fork so that if #forks has more than one option, it looks for one in #winnable combinations that has an adjacent cell with the same token (maybe iterate through the forks, select the winnable combinations (may need to separate that out into another method) that include that fork move, then if [1] is token return [0] (or [2]), else return [1])
+      # this still doesn't seem like it would force a draw if player two plays corner or side after player one plays center
       if self.token == "X"
         self.ffork(board, "O")
       else
