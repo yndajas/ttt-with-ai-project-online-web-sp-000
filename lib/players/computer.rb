@@ -88,7 +88,7 @@ module Players
       fork_moves = self.fork_moves(board, token)
       
       (fork_moves[0] + 1).to_s if fork_moves != nil 
-   end
+    end
 
     def block_fork(board, token = self.opposite_token(self.token))
       fork_moves = self.fork_moves(board, token)

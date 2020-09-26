@@ -85,13 +85,5 @@ class GameController
     else
       false
     end
-
-    # until replay == "n" || replay == "no"
-    #   puts "Would you like to play again? (Y/N)"
-    #   replay = gets.strip.downcase
-    #   if replay == "y" || replay == "yes"
-    #     self.start
-    #   end
-    # end
   end
 end
