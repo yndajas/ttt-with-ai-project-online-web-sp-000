@@ -1,15 +1,15 @@
 class GameController
   def players
     players = nil
-    
+
     until players == "0" || players == "1" || players == "2"
-      puts "How many (human) players? (0-2)"
+      puts "\nHow many (human) players? (0-2)"
       players = gets.strip
     end
-    
+
     players
   end
-  
+
   def setup(players)
     if players == "2"
       game = Game.new
@@ -23,32 +23,32 @@ class GameController
     end
     game
   end
-  
+
   def one_player_human_turn
     human_turn = nil
-    
+
     until human_turn == "1" || human_turn == "2"
-      puts "Do you want to play first or second? (1/2)"
+      puts "\nDo you want to play first or second? (1/2)"
       human_turn = gets.strip
     end
-    
+
     human_turn
   end
-  
+
   def one_player_human_token
     human_token = nil
-    
+
     until human_token == "X" || human_token == "O"
-      puts "Which token would you like to use? (X/O)"
+      puts "\nWhich token would you like to use? (X/O)"
       human_token = gets.strip.upcase
     end
-    
+
     human_token
   end
-  
+
   def one_player_config(human_turn, human_token)
     config = human_turn.concat(human_token)
-    
+
     if config == "1X"
       game = Game.new(Players::Human.new("X"), Players::Computer.new("O"))
     elsif config == "1O"
@@ -58,28 +58,28 @@ class GameController
     else
       game = Game.new(Players::Computer.new("X"))
     end
-    
+
     game
   end
-  
+
   def start
     players = self.players
-    
+
     game = self.setup(players)
-    
+
     game.play
-    
+
     self.start if self.replay?
   end
-  
+
   def replay?
     replay = nil
-    
+
     until replay == "n" || replay == "no" || replay == "y" || replay == "yes"
-      puts "Play again? (Y/N)"
+      puts "\nPlay again? (Y/N)"
       replay = gets.strip.downcase
     end
-    
+
     if replay == "y" || replay == "yes"
       true
     else

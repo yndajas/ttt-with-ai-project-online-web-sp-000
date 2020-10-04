@@ -5,8 +5,8 @@ require 'pry'
 
 # start of program
 
-puts "こんにちは! Welcome to Tic Tac Toe!"
+puts "\nこんにちは! Welcome to Tic Tac Toe!"
 
 GameController.new.start
 
-puts "Thanks for playing!"
+puts "\nThanks for playing!\n\n"
