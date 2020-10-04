@@ -2,7 +2,11 @@ require 'pry'
 
 class Game
   attr_accessor :board, :player_1, :player_2
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> ca456dd8448d5f300f66c21df31abb0cff8491b6
   WIN_COMBINATIONS = [
     [0,1,2],
     [3,4,5],
@@ -65,6 +69,7 @@ class Game
     end
     if self.won?
       # could add logic here so that the message is "You win!" or "You lose!" for one-player games
+<<<<<<< HEAD
 
       if self.player_1.class == self.player_2.class
         puts "\nCongratulations #{self.winner}!"
@@ -80,6 +85,23 @@ class Game
 
     else
       puts "\nIt's a draw!"
+=======
+      
+      if self.player_1.class == self.player_2.class
+        puts "Congratulations #{self.winner}!"
+      else
+        player = self.player_1.token == self.winner ? self.player_1 : self.player_2
+        
+        if player.class == Players::Human
+          puts "You win!"
+        else
+          puts "You lose!"
+        end
+      end
+      
+    else
+      puts "It's a draw!"
+>>>>>>> ca456dd8448d5f300f66c21df31abb0cff8491b6
     end
   end
 end
